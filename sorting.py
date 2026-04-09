@@ -51,7 +51,6 @@ def process_archive(file: Path, extension_group: str, root_folder: Path):
     destination = root_folder.absolute() / extension_group / file.stem
     print(f"{file.absolute()} -> {destination}/*")
     shutil.unpack_archive(file, destination, file.suffix.replace(".", ""))
-    pass
 
 
 def process_image(file: Path, extension_group: str, root_folder: Path):
