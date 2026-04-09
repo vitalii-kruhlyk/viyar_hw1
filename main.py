@@ -29,8 +29,7 @@ def get_files(curr_dir) -> list[PosixPath]:
 
 
 if __name__ == '__main__':
-    #current_dir = get_provided_directory()
-    current_dir = Path("./testf/")
+    current_dir = get_provided_directory()
     groups = get_groups()
     files = get_files(current_dir)
     for current_file in files:
