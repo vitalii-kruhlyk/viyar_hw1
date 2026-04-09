@@ -18,6 +18,7 @@ def get_provided_directory() -> Path:
         sys.exit(1)
     return curr_dir
 
+
 def get_files(curr_dir) -> list[PosixPath]:
     result = []
     for f in curr_dir.iterdir():
@@ -28,13 +29,13 @@ def get_files(curr_dir) -> list[PosixPath]:
     return result
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     current_dir = get_provided_directory()
     groups = get_groups()
     files = get_files(current_dir)
     for current_file in files:
         file_extension = current_file.suffix.replace(".", "").upper()
         extension_group = groups.get(file_extension, groups.get(others_keywork))
-        get_group_func().get(extension_group)(current_file, extension_group, current_dir)
-
-
+        get_group_func().get(extension_group)(
+            current_file, extension_group, current_dir
+        )
