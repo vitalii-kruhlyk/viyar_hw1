@@ -27,7 +27,7 @@ def add_contact(name: str, phone: str) -> str:
 @input_error
 def change_contact(name: str, phone: str) -> str:
     if name not in contacts:
-        raise KeyError("ERROR: Contact not found")
+        raise KeyError
     contacts[name] = phone
     return f"Contact {name} updated."
 
