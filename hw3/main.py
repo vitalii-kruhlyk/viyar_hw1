@@ -4,6 +4,7 @@ import inspect
 contacts = {}
 dict_keys_type = type({}.keys())
 
+
 def input_error(func):
     def new_func(*args, **kwargs):
         try:
@@ -33,7 +34,7 @@ def change_contact(name: str, phone: str) -> str:
 
 
 @input_error
-def get_phone(name:str) -> str:
+def get_phone(name: str) -> str:
     return contacts[name]
 
 
@@ -44,7 +45,10 @@ def show_all() -> str:
 def hello_command():
     print("How can I help you?")
 
-def parse_command(user_input: str, command_keys: dict_keys_type, multiword_commands: list[str]) -> tuple[str|None, list[str]]:
+
+def parse_command(
+    user_input: str, command_keys: dict_keys_type, multiword_commands: list[str]
+) -> tuple[str | None, list[str]]:
 
     parts = user_input.split()
     if not parts:
@@ -59,8 +63,10 @@ def parse_command(user_input: str, command_keys: dict_keys_type, multiword_comma
 
     return command, user_input.removeprefix(command).split()
 
+
 def exit_command():
     return "Good bye!"
+
 
 def get_commands() -> dict[str, Callable]:
     return {
@@ -71,8 +77,10 @@ def get_commands() -> dict[str, Callable]:
         "show all": show_all,
         "good bye": exit_command,
         "close": exit_command,
-        "exit": exit_command
+        "exit": exit_command,
     }
+
+
 @input_error
 def main():
     print("Bot assistant started. Type 'hello' to begin.")
@@ -97,7 +105,9 @@ def main():
 
         func_signature = inspect.signature(current_action)
         if len(func_signature.parameters) != len(args):
-            print(f"Incorrect number of arguments. Needed {len(func_signature.parameters)}, provided: {len(args)}.")
+            print(
+                f"Incorrect number of arguments. Needed {len(func_signature.parameters)}, provided: {len(args)}."
+            )
             continue
 
         result = current_action(*args)
