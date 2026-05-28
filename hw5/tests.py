@@ -2,8 +2,8 @@ import pytest
 from datetime import date, timedelta
 from main import AddressBook, Birthday, Field, Name, Phone, Record
 
-
 # --- Field ---
+
 
 class TestField:
     def test_value(self):
@@ -21,12 +21,14 @@ class TestField:
 
 # --- Name ---
 
+
 class TestName:
     def test_value(self):
         assert Name("John").value == "John"
 
 
 # --- Phone ---
+
 
 class TestPhone:
     def test_valid(self):
@@ -62,6 +64,7 @@ class TestPhone:
 
 # --- Birthday ---
 
+
 class TestBirthday:
     def test_valid(self):
         assert Birthday("01.01.1990").value == "01.01.1990"
@@ -89,6 +92,7 @@ class TestBirthday:
 
 
 # --- Record ---
+
 
 class TestRecord:
     def test_init(self):
@@ -173,6 +177,7 @@ class TestRecord:
 
 
 # --- AddressBook ---
+
 
 class TestAddressBook:
     def setup_method(self):

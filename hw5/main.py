@@ -7,7 +7,7 @@ class Field:
     _value: str
 
     def __init__(self, value: str) -> None:
-        self.value = value # -> setter -> '_value' field
+        self.value = value  # -> setter -> '_value' field
 
     @property
     def value(self) -> str:
@@ -52,7 +52,9 @@ class Birthday(Field):
         try:
             datetime.strptime(val, self.DATE_FORMAT)
         except ValueError:
-            raise ValueError(f"День народження має бути в форматі DD.MM.YYYY, отримано: {val}")
+            raise ValueError(
+                f"День народження має бути в форматі DD.MM.YYYY, отримано: {val}"
+            )
         self._value = val
 
     @property
@@ -65,7 +67,9 @@ class Record:
     phones: list[Phone]
     birthday: Birthday | None
 
-    def __init__(self, name: str, phones: list[str] | None = None, birthday: str | None = None) -> None:
+    def __init__(
+        self, name: str, phones: list[str] | None = None, birthday: str | None = None
+    ) -> None:
         self.name = Name(name)
         self.phones = [Phone(p) for p in phones] if phones else []
         self.birthday = Birthday(birthday) if birthday else None
@@ -105,7 +109,9 @@ class Record:
 
     def __str__(self) -> str:
         phones_part = f"номера: {'; '.join(p.value for p in self.phones) if self.phones else 'не вказано'}"
-        bday_part = f"день народження: {self.birthday if self.birthday else 'не вказано'}"
+        bday_part = (
+            f"день народження: {self.birthday if self.birthday else 'не вказано'}"
+        )
         return f"Власник: {self.name.value}, {phones_part}, {bday_part}"
 
 
