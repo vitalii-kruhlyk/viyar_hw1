@@ -65,14 +65,14 @@ class Record:
 
 
 class AddressBook(UserDict[str, Record]):
-    records: dict[str, Record]
+    data: dict[str, Record]
 
     def add_record(self, record: Record) -> None:
-        self.records[record.name.value] = record
+        self.data[record.name.value] = record
 
     def find(self, name: str) -> Record | None:
-        return self.records.get(name)
+        return self.data.get(name)
 
     def delete(self, name: str) -> None:
-        if name in self.records:
-            del self.records[name]
+        if name in self.data:
+            del self.data[name]
