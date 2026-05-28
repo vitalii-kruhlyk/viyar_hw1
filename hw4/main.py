@@ -37,7 +37,7 @@ class Record:
 
     def __init__(self, name: str, phones: list | None = None) -> None:
         self.name = Name(name)
-        self.phones = phones if phones is not None else []
+        self.phones = [Phone(p) for p in phones] if phones else []
 
     def add_phone(self, phone: str) -> None:
         self.phones.append(Phone(phone))
