@@ -1,6 +1,6 @@
 from collections import UserDict
 from datetime import date, datetime
-from typing import Generator
+from typing import Iterator
 
 
 class Field:
@@ -128,7 +128,7 @@ class AddressBook(UserDict[str, Record]):
         if name in self.data:
             del self.data[name]
 
-    def iterator(self, page_size: int = 10) -> Generator[list[Record], None, None]:
+    def iterator(self, page_size: int = 10) -> Iterator[list[Record]]:
         records = list(self.data.values())
         for i in range(0, len(records), page_size):
             yield records[i : i + page_size]
