@@ -19,7 +19,9 @@ class Name(Field):
 class Phone(Field):
     def __post_init__(self) -> None:
         if not self.value.isdigit() or len(self.value) != 10:
-            raise ValueError(f"Не виконується умова: телефон має бути числом з довжиною 10 символів. Отримано значення '{self.value}' довжиною {len(self.value)} символів.")
+            raise ValueError(
+                f"Не виконується умова: телефон має бути числом з довжиною 10 символів. Отримано значення '{self.value}' довжиною {len(self.value)} символів."
+            )
 
     def __eq__(self, other: object) -> bool:
         if isinstance(other, str):
@@ -74,4 +76,3 @@ class AddressBook(UserDict[str, Record]):
     def delete(self, name: str) -> None:
         if name in self.records:
             del self.records[name]
-
